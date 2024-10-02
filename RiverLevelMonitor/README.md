@@ -42,8 +42,8 @@ Folder structure
       <th>Output</th>
     </tr>
     <tr>
-      <td colspan="2" style="text-align:center;">MIPI camera</td>
-      <td colspan="2" style="text-align:center;">HDMI</td>
+      <td style="text-align:center;">MIPI camera</td>
+      <td style="text-align:center;">HDMI</td>
     </tr>
 </table>
 <table>
