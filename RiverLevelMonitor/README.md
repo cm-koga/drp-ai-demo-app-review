@@ -7,6 +7,8 @@ This software could be useful in a variety of settings, such as retail stores, m
 The AI model used for the sample application is [Deeplabv3](https://arxiv.org/pdf/1706.05587.pdf) and [YOLOX](https://arxiv.org/pdf/2107.08430.pdf).
   [e-con Systems](https://www.e-consystems.com/renesas/sony-starvis-imx462-ultra-low-light-camera-for-renesas-rz-v2h.asp).
 
+<img src=./img/app_river_level_monitor_cam.png width=600>
+
 ### Setup
 Download the exe directory from [here](https://github.com/cm-koga/assets/releases/download/drp-ai-demo-app-v1.0.0/exe.zip), unzip and place it.
 
@@ -269,7 +271,7 @@ After completion of the guide, the user is expected of following things.
 3. Following window shows up on HDMI screen.  
 
     | Normal water level |
-    |:---|
+    |---|
     |<img src=./img/app_river_level_monitor_cam.png width=600>|
 
     On application window, following information is displayed.  
@@ -300,7 +302,7 @@ After completion of the guide, the user is expected of following things.
     
 
     | WARNING WATER LEVEL |
-    |:---|
+    |---|
     |<img src=./img/app_river_level_monitor_cam_Alert.png width=600>|
 
 5. To terminate the application, switch the application window to the terminal by using `Super(windows key)+Tab` and press ENTER key on the terminal of the board.
