@@ -3,7 +3,7 @@
 ## Application: Overview
 This application is designed to detect river objects in the images captured by the camera and display the flood risk of the river based on its area on the HDMI screen.
 
-This software could be useful in a variety of settings, such as retail stores, museums, and events.  
+This software could be useful in the labor-saving and efficiency aspects of river monitoring.
 The AI model used for the sample application is [Deeplabv3](https://arxiv.org/pdf/1706.05587.pdf) and [YOLOX](https://arxiv.org/pdf/2107.08430.pdf).
   [e-con Systems](https://www.e-consystems.com/renesas/sony-starvis-imx462-ultra-low-light-camera-for-renesas-rz-v2h.asp).
 
