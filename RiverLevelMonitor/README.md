@@ -228,11 +228,6 @@ The folder contains following items.
     └── home/
         └── root/
             └── tvm/ 
-                ├── yolox_cam/
-                │   ├── preprocess
-                │   ├── deploy.json
-                │   ├── deploy.params
-                │   └── deploy.so
                 ├── deeplabv3_cam/
                 │   ├── preprocess
                 │   ├── deploy.json
