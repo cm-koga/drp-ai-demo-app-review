@@ -286,7 +286,7 @@ After completion of the guide, the user is expected of following things.
         - PreProcess: Processing time taken for AI pre-processing.  
         - PostProcess: Processing time taken for AI post-processing.<br>(excluding the time for drawing on HDMI screen).  
 
-4. Save normal river area. ("s" + `Enter` key).  
+4. Save normal river area as a threshold. ("s" + `Enter` key).  
     ```sh
     s
     ```
