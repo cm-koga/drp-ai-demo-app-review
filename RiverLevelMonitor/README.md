@@ -4,7 +4,7 @@
 This application is designed to detect river objects in the images captured by the camera and display the flood risk of the river based on its area on the HDMI screen.
 
 This software could be useful in the labor-saving and efficiency aspects of river monitoring.
-The AI model used for the sample application is [Deeplabv3](https://arxiv.org/pdf/1706.05587.pdf) and [YOLOX](https://arxiv.org/pdf/2107.08430.pdf).
+The AI model used for the sample application is [Deeplabv3](https://arxiv.org/pdf/1706.05587.pdf) .
   [e-con Systems](https://www.e-consystems.com/renesas/sony-starvis-imx462-ultra-low-light-camera-for-renesas-rz-v2h.asp).
 
 <img src=./img/app_river_level_monitor_cam.png width=600>
@@ -282,7 +282,7 @@ After completion of the guide, the user is expected of following things.
         - Display Alert : `Normal water level`  or `CAUTION WATER LEVEL`  or `WARNING WATER LEVEL`  or `HAZARD WATER LEVEL` .
 
     - Processing time  
-        - Total AI Time (DeepLabv3+YOLOX) : Sum of all processing time below.  
+        - Total AI Time (DeepLabv3) : Sum of all processing time below.  
         - Inference: Processing time taken for AI inference.  
         - PreProcess: Processing time taken for AI pre-processing.  
         - PostProcess: Processing time taken for AI post-processing.<br>(excluding the time for drawing on HDMI screen).  
@@ -322,12 +322,6 @@ The file contains two sections: [base_area], [threshold].
 - hazard-per-rate: setting threshold of hazard.
 
 ### AI Model
-- YOLOX: [Megvii](https://github.com/Megvii-BaseDetection/YOLOX)
-  - Dataset: [Pascal VOC](http://host.robots.ox.ac.uk/pascal/VOC/index.html)
-    - [VOC2007](http://host.robots.ox.ac.uk/pascal/VOC/voc2007/index.html)
-    - [VOC2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html)
-  Input size: 1x3x640x640  
-  Output1 size: 1x25x80x80 + 1x25x40x40 + 1x25x20x20  
 - Deeplabv3: [torchvision](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/)
   - Dataset: [COCO](https://cocodataset.org/#home)
     - [COCO2017](http://images.cocodataset.org/annotations/annotations_trainval2017.zip)
@@ -336,10 +330,7 @@ The file contains two sections: [base_area], [threshold].
 
 ### AI inference time
 |Processing | time|
-|:---|:---|
-|YOLOX Pre-processing | 18ms <br> |
-|YOLOX Inference | 17ms |
-|YOLOX Post-processing | 2ms |
+|---|---|
 |Deeplabv3 Pre-processing | 22ms <br> |
 |Deeplabv3 Inference | 21ms |
 |Deeplabv3 Post-processing | 13ms |
@@ -347,11 +338,8 @@ The file contains two sections: [base_area], [threshold].
 ### Processing
 
 |Processing | Details |
-|:---|:---|
-|YOLOX Pre-processing | Processed by DRP-AI. <br> |
-|YOLOX Inference | Processed by DRP-AI and CPU. |
-|YOLOX Post-processing | Processed by CPU. |
-|Deeplabv3 Pre-processing | Processed by CPU. <br> |
+|---|---|
+|Deeplabv2 Pre-processing | Processed by CPU. <br> |
 |Deeplabv3 Inference | Processed by CPU. |
 |Deeplabv3 Post-processing | Processed by CPU. |
 
@@ -359,14 +347,13 @@ The file contains two sections: [base_area], [threshold].
 ### Image buffer size
 
 | Camera capture buffer size|HDMI output buffer size|
-|:---|:---|
+|---|---|
 | VGA (640x480) in YUYV format  | FHD (1920x1080) in BGRA format  |
 
 ## License
 For AI model, see following directory..  
 | AI Model | License directory|
-|:---|:---|
-| YOLOX  | `exe/licenses`  |
+|---|---|
 | Deeplabv3  | `exe/licenses`  |
 | spdlog  | `src/package/spdlog/LICENSE.txt`  |
 
