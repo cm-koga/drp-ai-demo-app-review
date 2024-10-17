@@ -13,12 +13,22 @@ The AI model used for the sample application is [Deeplabv3](https://arxiv.org/pd
 </tr>
 </table>
 
-### Setup
-Download the exe directory from [here](https://github.com/cm-koga/assets/releases/download/drp-ai-demo-app-v1.0.0/exe.zip), unzip and place it.
+### Instruction
+1. Run following commands to download the necessary file.  
+
+    ```sh
+    cd RiverLevelMonitor/<EXE_DIR>/deeplabv3_cam
+    wget <URL>/<SO_FILE>
+    ```
+
+| Board | `EXE_DIR` | URL | `SO_FILE` | File Location |
+| --- | --- | --- | --- | --- |
+| RZ/V2H EVK | exe |<span style="font-size: small">`https://github.com/cm-koga/drp-ai-demo-app-review/releases/download/1.0.0/` | deploy.so | [Release v1.0.0](https://github.com/cm-koga/drp-ai-demo-app-review/releases/download/1.0.0/deploy.so) |
 
     └── RiverLevelMonitor/  
          ├── src/
-         ├── exe/ <--
+         ├── exe/
+         │   └── deeplabv3_cam/ <-- deploy.so
          ├── etc/ 
          ├── img/ 
          └── README.md 
