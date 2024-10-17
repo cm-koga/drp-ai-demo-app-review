@@ -5,9 +5,13 @@ This application is designed to detect river objects in the images captured by t
 
 This software could be useful in the labor-saving and efficiency aspects of river monitoring.
 The AI model used for the sample application is [Deeplabv3](https://arxiv.org/pdf/1706.05587.pdf) .
-  [e-con Systems](https://www.e-consystems.com/renesas/sony-starvis-imx462-ultra-low-light-camera-for-renesas-rz-v2h.asp).
 
-<img src=./img/app_river_level_monitor_cam.png width=600>
+<table>
+<tr>
+<td><img src=./img/app_river_level_monitor_cam.png width=600></td>
+<td><img src=./img/app_river_level_monitor_cam_Alert.png width=600></td>
+</tr>
+</table>
 
 ### Setup
 Download the exe directory from [here](https://github.com/cm-koga/assets/releases/download/drp-ai-demo-app-v1.0.0/exe.zip), unzip and place it.
@@ -36,6 +40,7 @@ Folder structure
 
 ### Supported Product
 - RZ/V2H Evaluation Board Kit (RZ/V2H EVK)
+- RZ/V2H AI SDK v5.00
 
 ### Input/Output
 <table>
@@ -52,15 +57,6 @@ Folder structure
     <tr>
       <th>I/O</th>
       <th>RZ/V2H EVK</th>
-    </tr>
-    <tr>
-      <td>Input</td>
-      <td>MIPI camera</td>
-      </td>
-    </tr>
-    <tr>
-      <td >Output</td>
-      <td colspan="2" style="text-align:center;">HDMI</td>
     </tr>
 </table>
 
@@ -90,7 +86,7 @@ Folder structure
     </tr>
     <tr>
       <td>MIPI camera</td>
-      <td>Used as a camera input source. Supported camera : e-CAM22_CURZH camera provided by [e-con Systems](https://www.e-consystems.com/renesas/sony-starvis-imx462-ultra-low-light-camera-for-renesas-rz-v2h.asp).</td>
+      <td>Used as a camera input source. Supported camera :<br> e-CAM22_CURZH camera provided by <a href="https://www.e-consystems.com/renesas/sony-starvis-imx462-ultra-low-light-camera-for-renesas-rz-v2h.asp">e-con Systems</a>.</td>
     </tr>
     <tr>
       <td rowspan="8">Common</td>
@@ -148,7 +144,7 @@ MIPI camera needs to be connected to appropriate port based on its requirement.
 All pre-built binaries are provided.
 
 ### Prerequisites
-This section expects the user to have completed Step 5 of [Getting Started Guide](https://renesas-rz.github.io/rzv_ai_sdk/5.00/getting_started_v2h.html) provided by Renesas. 
+This section expects the user to have completed Step 5 of [Getting Started Guide](https://renesas-rz.github.io/rzv_ai_sdk/5.00/getting_started.html) provided by Renesas. 
 
 After completion of the guide, the user is expected of following things.
 - AI SDK setup is done.
@@ -208,16 +204,15 @@ For the ease of deployment all the deployables file and folders are provided in 
 
 The folder contains following items. 
 |File | Details |
-|:---|:---|
+|---|---|
 |licecnses | License information of AI model. <br>Not necessary for running application. |
-|yolox_cam | Model object files for deployment.<br>Pre-processing Runtime Object files included. |
 |deeplabv3_cam | Model object files for deployment.<br>Pre-processing Runtime Object files included. |
 |app_river_level_monitor_cam | application file. |
 
 ### Instruction
 1. Copy the following files to the `/home/root/tvm` directory of the rootfs (SD Card) for the board.
     |File | Details |
-    |:---|:---|
+    |---|---|
     |All files in [exe](./exe) directory | Including `deploy.so` file. |
     |`app_river_level_monitor_cam` application file | Generated the file according to [Application File Generation](#application-file-generation) |
     |`Config.ini` file | Threshold settings file. |
@@ -276,9 +271,8 @@ After completion of the guide, the user is expected of following things.
 
     On application window, following information is displayed.  
     - Camera capture  
-    - Object Detection result (River area segmentation, Bounding boxes, class name and score.)  
+    - Segmentation result (River area segmentation, Bounding boxes, class name and score.)  
         - River Area : Displays the ratio of river area to the saved normal river.
-        - Person around the river : Displays the number of people by the river.
         - Display Alert : `Normal water level`  or `CAUTION WATER LEVEL`  or `WARNING WATER LEVEL`  or `HAZARD WATER LEVEL` .
 
     - Processing time  
@@ -291,7 +285,7 @@ After completion of the guide, the user is expected of following things.
     ```sh
     s
     ```
-    Save normal river area to Param.ini.  
+    Save current river area as a threshold to determine the warning level to Param.ini.
 
     - Display Alert  
         - If the area of ​​the river area exceeds the threshold after saving, an alert will be displayed.  
@@ -310,23 +304,29 @@ After completion of the guide, the user is expected of following things.
 
 ## Application: Configuration 
 
-### Config.ini and Param.ini 
-Explanation of the Config.ini and Param.ini file
+### Config.ini 
+Explanation of the Config.ini file
 
-The file contains two sections: [base_area], [threshold].
+threshold section:
 
-- river-pix : Normal river area (Saved with "s" + `Enter` key)
 - person-alert-per-rate : setting pesron threshold of warning. 
 - caution-per-rate : setting threshold of Caution. 
 - warning-per-rate: setting threshold of warning. 
 - hazard-per-rate: setting threshold of hazard.
 
+### Param.ini 
+Explanation of the Param.ini file
+
+base_area section:
+
+- river-pix : Normal river area (Saved with "s" + `Enter` key)
+
 ### AI Model
 - Deeplabv3: [torchvision](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/)
-  - Dataset: [COCO](https://cocodataset.org/#home)
-    - [COCO2017](http://images.cocodataset.org/annotations/annotations_trainval2017.zip)
-  Input size: 1x3x224x224  
-  Output2 size: 2x2xx224x224  
+  - Dataset: [COCO](https://cocodataset.org/#home), [COCO2017](http://images.cocodataset.org/annotations/annotations_trainval2017.zip)
+  
+  Input size : 1x3x224x224  
+  Output size: 1x2x224x224  
 
 ### AI inference time
 |Processing | time|
@@ -348,7 +348,7 @@ The file contains two sections: [base_area], [threshold].
 
 | Camera capture buffer size|HDMI output buffer size|
 |---|---|
-| VGA (640x480) in YUYV format  | FHD (1920x1080) in BGRA format  |
+| FHD (1920x1080) in YUYV format  | FHD (1920x1080) in BGRA format  |
 
 ## License
 For AI model, see following directory..  
