@@ -63,12 +63,6 @@ Folder structure
       <td style="text-align:center;">HDMI</td>
     </tr>
 </table>
-<table>
-    <tr>
-      <th>I/O</th>
-      <th>RZ/V2H EVK</th>
-    </tr>
-</table>
 
 ## Application: Requirements
 
@@ -276,7 +270,7 @@ After completion of the guide, the user is expected of following things.
 
     On application window, following information is displayed.  
     - Camera capture  
-    - Segmentation result (River area segmentation, Bounding boxes, class name and score.)  
+    - Segmentation result (River area segmentation, class name and score.)  
         - River Area : Displays the ratio of river area to the saved normal river.
         - Display Alert : `Normal water level`  or `CAUTION WATER LEVEL`  or `WARNING WATER LEVEL`  or `HAZARD WATER LEVEL` .
 
@@ -344,8 +338,8 @@ base_area section:
 
 |Processing | Details |
 |---|---|
-|Deeplabv2 Pre-processing | Processed by CPU. <br> |
-|Deeplabv3 Inference | Processed by CPU. |
+|Deeplabv3 Pre-processing | Processed by DRP-AI. <br> |
+|Deeplabv3 Inference | Processed by DRP-AI and CPU. |
 |Deeplabv3 Post-processing | Processed by CPU. |
 
 
