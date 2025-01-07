@@ -93,8 +93,9 @@ Folder structure
       RZ/V2H EVK has HDMI port.</td>
     </tr>
     <tr>
-      <td>Intel RealSense Depth Camera D435i </td>
-      <td>Used as a camera input source.</td>
+      <td>MIPI Camera</td>
+      <td>Used as a camera input source. Supported camera : e-CAM22_CURZH camera provided by [e-con Systems](https://www.e-consystems.com/renesas/sony-starvis-imx462-ultra-low-light-camera-for-renesas-rz-v2h.asp).<br>
+      Only used in Camera Mode.</td>
     </tr>
     <tr>
       <td rowspan="8">Common</td>
@@ -247,19 +248,19 @@ The folder contains following items.
 |---|---|
 |patch_core_demo | Model object files for deployment.<br>Pre-processing Runtime Object files included. |
 |input_data_1 | Default memory bank binary file <br>and default image files for use in camera mode. |
-|app_patch_coer_demo | application file. |
+|app_patch_core_demo | application file. |
 
 ### Instruction
 
-3. Copy the following files to the `/home/root/tvm` directory of the rootfs (SD Card) for the board.
+1. Copy the following files to the `/home/root/tvm` directory of the rootfs (SD Card) for the board.
     |File | Details |
     |---|---|
     |All files in [exe](./exe)  directory | Including `deploy.so` file. |
     |`app_patch_core_demo` application file | Generated the file according to [Application File Generation](#application-file-generation) |
 
-4. Check if `libtvm_runtime.so` exists under `/usr/lib64` directory of the rootfs (SD card) on the board.
+2. Check if `libtvm_runtime.so` exists under `/usr/lib64` directory of the rootfs (SD card) on the board.
 
-5. Folder 
+3. Folder 
 structure in the rootfs (SD Card) would look like:
     ```sh
     ├── usr/
@@ -276,7 +277,7 @@ structure in the rootfs (SD Card) would look like:
                 ├── input_data_1/
                 │   ├── XXXXX.bin
                 │   └── XXXXX.png
-                └── app_body_meas_cam
+                └── app_patch_core_demo
     ```
 >**Note:** The directory name could be anything instead of `tvm`. If you copy the whole `EXE_DIR` folder 
 on the board, you are not required to rename it `tvm`.
